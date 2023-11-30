@@ -1,4 +1,4 @@
-# List all computers.
+# List all computers, need to put each computer in its own quotes.
 $all = "list", "of", "computers"
 
 write-host "something" -foregroundcolor Yellow
