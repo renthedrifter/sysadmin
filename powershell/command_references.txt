@@ -81,3 +81,6 @@ New-Item -ItemType Directory <destination path> '<directory name>'
 
 New-Item -ItemType File -Name '<name of the file>'
 # Creates a new file. 
+
+Select-String
+# Equivalent to grep'ing in Linux.

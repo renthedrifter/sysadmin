@@ -1,4 +1,3 @@
-# HAS NOT BEEN TESTED YET!!!!
 # Start putting items in c:\temp then possibly have a new script to check for items in c:\temp.
 
 $item = "path to item"
