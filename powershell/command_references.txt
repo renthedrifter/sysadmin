@@ -75,3 +75,9 @@ New-NetFirewallRule
 
 Get-Content
 # PowerShell command equivalent to cat in Linux.
+
+New-Item -ItemType Directory <destination path> '<directory name>'
+# Creates a new directory.
+
+New-Item -ItemType File -Name '<name of the file>'
+# Creates a new file. 
