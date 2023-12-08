@@ -1,0 +1,74 @@
+# Some commands referenced from https://www.pdq.com/blog/
+
+Get-Help <cmdlet_name>
+# Get-Help Get-Process -Full, this will give you the entire documentation.
+# To update help files run Update-Help, do this every few months. 
+
+Get-Command
+# Returns all cmdlets, functions, and aliases installed on the computer.
+# Narrow results down by filtering with -Name <keyword> you can use * for filtering also.
+
+Get-Member
+# This can be used to inspect objects <cmdlet> | Get-Member -Name <keyword>
+
+Out-File
+# Saves the output of your PowerShell command. Get-Process | Out-File C:\processes.txt, alternatively you can use -InputObject parameter
+# $proc = Get-Process
+# Out-File C:\processes.txt -InputObject $proc
+
+Export-Csv
+# Does what the name implies.
+
+Get-ChildItem
+# Returns all items in one or more containers. Useful switches are -Recurse, if you want to limit the subdirectory search use -Depth.
+# -Include to search for a word in a file name. Get-Childitem C:\Users\* -Recurse -Include *keyword*.txt
+
+Out-GridView
+# Outputs results to a gui <command> | Out-GridView. Get-Process | Out-GridView
+# -PassThru sends multiple items.
+
+Invoke-Item
+# Launches items, including files, pictures, executables, etc. 
+
+Get-NetAdapter
+# Will give you a list of your network adapters and tell you which ones are up. New PS cmdlet.
+
+Get-NetIpConfiguration
+# Gives you your network configuration settings. New PS cmdlet.
+
+Test-Path
+# Will let you know if a file exists. Test-Path -Path C:\exist.txt
+
+Where-Object
+# Used for filtering. Usually preceded by Get-Childitem, Get-Process, and Get-AppxPackage. <cmdlet> | Where-Object -Property <property name> <operator> <filter>.
+# Get-AppxPackage | Where-Object -Property Name -eq '<name of package>'. 
+
+# Anything in {} are script blocks, which are a collection of statements. Similar to functions but don't require a name.
+Get-Service | Where-Object -FilterScript {$_.Status -eq 'Stopped' -and $_.StartType -eq 'Automatic'} | Select-Object Name, Status, StartType
+
+# $_. are automatic variables called $PSItems. They act as a variable for the current pipeline input item being processed. 
+
+Get-ChildItem -Path 'C:\Users' -Include '*.jpg', '*.mov' -Recurse | Where-Object -FilterScript {$_.Length -gt 10MB -and $_.LastWriteTime -gt (Get-Date).AddDays(-10)}
+# Finds files in defined path that are larger than 10 MB and modified within the last 10 days. 
+
+Get-Acl
+# Get's the access control list of a given file or folder. 
+
+Set-Acl
+# Modifies permissions of a file or folder.
+
+Get-Acl -Path 'PATH1' | Set-Acl -Path 'PATH2'
+# This copies the ACL from PATH1 to PATH2.
+
+Unlock-ADAccount
+# Unlocks AD account. AD cmdlet
+
+Set-ADAccountPassword
+# Sets AD account password. AD cmdlet
+
+Start-Sleep 60; Restart-Computer -Force -ComputerName 'computername'
+# Restarts the remote computer after 1 minute. The ; means the end of a command.
+
+Get-NetFirewallRule -all
+
+New-NetFirewallRule
