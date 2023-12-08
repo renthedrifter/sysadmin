@@ -72,3 +72,6 @@ Start-Sleep 60; Restart-Computer -Force -ComputerName 'computername'
 Get-NetFirewallRule -all
 
 New-NetFirewallRule
+
+Get-Content
+# PowerShell command equivalent to cat in Linux.
