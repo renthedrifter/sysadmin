@@ -10,6 +10,8 @@ $directory = read-host -prompt "What do you want to name the folder? $directory"
 
 # Creates the directory.
 New-Item -ItemType Directory -Path $path -Name $directory
+Get-ChildItem -Path $path (Join-Path -Path $path -ChildPath subfolder1) -ItemType Directory | Out-Null
+Get-ChildItem -Path $path (Join-Path -Path $path -ChildPath subfolder2) -ItemType Directory | Out-Null
 
 # Setting ACL properties.
 $newacl = Get-Acl -Path $directory
